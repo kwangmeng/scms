@@ -10,14 +10,14 @@
 <ion-content class="bg">
   <ion-grid>
     <ion-row>
-      <ion-col>
+      <ion-col (tap)="goPage(1)">
         <div class="round-border">
 
           <h5>Clubs</h5>
             <h2>6</h2>
         </div>
       </ion-col>
-      <ion-col>
+      <ion-col (tap)="goPage(2)">
           <div class="round-border">
               <h5>Applications</h5>
               <h2>6</h2>
@@ -26,7 +26,7 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
+      <ion-col (tap)="goPage(3)">
         <div class="round-border">
 
                <h5>Students</h5>
@@ -35,7 +35,7 @@
 
         </div>
       </ion-col>
-      <ion-col>
+      <ion-col (tap)="goPage(4)">
           <div class="round-border">
 
               <h5>Activities</h5>

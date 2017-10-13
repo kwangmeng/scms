@@ -5,6 +5,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import {ClubPage} from '../pages/club/club';
+import {ClubmgmtPage} from '../pages/clubmgmt/clubmgmt';
+import {SigninPage} from '../pages/signin/signin';
+import {SignupPage} from '../pages/signup/signup';
 
 @Component({
   templateUrl: 'app.html'
@@ -22,7 +26,9 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Dashboard', component: HomePage,icon: "home" },
-      { title: 'Club Applications', component: HomePage,icon: "home" }
+      { title: 'Club Applications', component: ClubPage,icon: "checkbox-outline" },
+      {title: 'Clubs Management', component: ClubmgmtPage,icon: "build" },
+      {title: 'Sign In', component: SigninPage,icon: "log-in" }
     ];
 
     this.activePage = this.pages[0];

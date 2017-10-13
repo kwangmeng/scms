@@ -9,13 +9,15 @@ import {ClubPage} from '../pages/club/club';
 import {ClubmgmtPage} from '../pages/clubmgmt/clubmgmt';
 import {SigninPage} from '../pages/signin/signin';
 import {SignupPage} from '../pages/signup/signup';
+import {ActivityPage} from '../pages/activity/activity';
+import {StudentsPage} from '../pages/students/students';
 
 import {ClubPageModule} from '../pages/club/club.module';
 import {ClubmgmtPageModule} from '../pages/clubmgmt/clubmgmt.module';
 import {SigninPageModule} from '../pages/signin/signin.module';
 import {SignupPageModule} from '../pages/signup/signup.module';
-
-
+import {StudentsPageModule} from '../pages/students/students.module';
+import {ActivityPageModule} from '../pages/activity/activity.module';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -35,7 +37,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ClubmgmtPageModule,
     ClubPageModule,
     SigninPageModule,
-    SignupPageModule
+    SignupPageModule,
+    StudentsPageModule,
+    ActivityPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -45,7 +49,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ClubmgmtPage,
     ClubPage,
     SigninPage,
-    SignupPage
+    SignupPage,
+    StudentsPage,
+    ActivityPage
   ],
   providers: [
     StatusBar,

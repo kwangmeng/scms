@@ -1,7 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {Chart} from 'chart.js';
-
+import {ClubPage} from '../club/club';
+import {ClubmgmtPage} from '../clubmgmt/clubmgmt';
+import {ActivityPage} from '../activity/activity';
+import {StudentsPage} from '../students/students';
 
 @Component({
   selector: 'page-home',
@@ -44,6 +47,19 @@ export class HomePage {
       data: data,
       options: options
     });
+  }
+
+
+  goPage(page){
+    if(page == 1){
+      this.navCtrl.push(ClubmgmtPage);
+    }else if(page == 2){
+      this.navCtrl.push(ClubPage)
+    }else if(page == 3){
+      this.navCtrl.push(StudentsPage);
+    }else if(page == 4){
+      this.navCtrl.push(ActivityPage);
+    }
   }
 
 }
