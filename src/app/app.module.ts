@@ -5,6 +5,18 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import {ClubPage} from '../pages/club/club';
+import {ClubmgmtPage} from '../pages/clubmgmt/clubmgmt';
+import {SigninPage} from '../pages/signin/signin';
+import {SignupPage} from '../pages/signup/signup';
+
+import {ClubPageModule} from '../pages/club/club.module';
+import {ClubmgmtPageModule} from '../pages/clubmgmt/clubmgmt.module';
+import {SigninPageModule} from '../pages/signin/signin.module';
+import {SignupPageModule} from '../pages/signup/signup.module';
+
+
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -17,13 +29,23 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp,{
+      mode: 'md'
+    }),
+    ClubmgmtPageModule,
+    ClubPageModule,
+    SigninPageModule,
+    SignupPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    ClubmgmtPage,
+    ClubPage,
+    SigninPage,
+    SignupPage
   ],
   providers: [
     StatusBar,

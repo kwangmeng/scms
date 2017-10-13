@@ -14,3 +14,29 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+ion-title{
+    font-family:new;
+}
+
+.menu-bg{
+        background: url("../../assets/img/bg.jpg") repeat center center ; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        background-repeat: repeat repeat;
+    
+}
+
+.newtxt{
+    font-family:new;
+    font-size:16px;
+}
+
+.activeHighlight{
+    background-color: map-get($colors, dark);
+    color:white;
+}
+
+.bg{
+    background: #dcdcdc;
+}
