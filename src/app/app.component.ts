@@ -9,6 +9,8 @@ import {ClubPage} from '../pages/club/club';
 import {ClubmgmtPage} from '../pages/clubmgmt/clubmgmt';
 import {SigninPage} from '../pages/signin/signin';
 import {SignupPage} from '../pages/signup/signup';
+import {ActivityPage} from '../pages/activity/activity';
+import {StudentsPage} from '../pages/students/students';
 
 @Component({
   templateUrl: 'app.html'
@@ -28,7 +30,10 @@ export class MyApp {
       { title: 'Dashboard', component: HomePage,icon: "home" },
       { title: 'Club Applications', component: ClubPage,icon: "checkbox-outline" },
       {title: 'Clubs Management', component: ClubmgmtPage,icon: "build" },
-      {title: 'Sign In', component: SigninPage,icon: "log-in" }
+      {title: 'Activities', component: ActivityPage,icon: "calendar" },
+      {title: 'Students List', component: StudentsPage,icon: "people" },
+      {title: 'Sign In', component: SigninPage,icon: "log-in" },
+
     ];
 
     this.activePage = this.pages[0];

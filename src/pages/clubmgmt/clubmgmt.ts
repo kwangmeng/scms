@@ -22,4 +22,7 @@ export class ClubmgmtPage {
     console.log('ionViewDidLoad ClubmgmtPage');
   }
 
+  detail(){
+    
+  }
 }
