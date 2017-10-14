@@ -9,7 +9,12 @@
 
 
 
-<ion-content padding>
+<ion-content>
+  <ion-searchbar
+  [(ngModel)]="myInput"
+  [showCancelButton]="true"
+  (ionInput)="onInput($event)">
+</ion-searchbar>
     <ion-list>
         <ion-item>
           <ion-avatar item-start>

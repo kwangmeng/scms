@@ -22,4 +22,9 @@ export class StudentsPage {
     console.log('ionViewDidLoad StudentsPage');
   }
 
+
+onInput(event){
+  
+}
+
 }
