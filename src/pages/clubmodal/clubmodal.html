@@ -1,18 +1,104 @@
-<!--
-  Generated template for the ClubmodalPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
+    <ion-navbar color="unimy">
+     
+      <ion-title>Club</ion-title>
+    </ion-navbar>
+  </ion-header>
 
-  <ion-navbar>
-    <ion-title>clubmodal</ion-title>
-  </ion-navbar>
-
-</ion-header>
 
 
-<ion-content padding>
+<ion-content class="bg">
+  <div class="top-container">
+<img src="assets/img/esports.jpg" class="img-bg">
+  </div>
+  <ion-segment [(ngModel)]="options" color="unimy" style="background:white;">
+      <ion-segment-button value="stats" (tap)="loadStats()">
+        Club Stats
+      </ion-segment-button>
+      <ion-segment-button value="activities" (tap)="loadStats()">
+        Activities
+      </ion-segment-button>
+      <ion-segment-button value="mgmt" (tap)="loadStats()">
+        Management
+      </ion-segment-button>
+    </ion-segment>
+
+<div [ngSwitch]="options">
+    <div *ngSwitchCase="'stats'">
+
+       <ion-grid>
+    <ion-row>
+      <ion-col >
+        <div class="round-border">
+
+          <h5>Members</h5>
+            <h2>55</h2>
+        </div>
+      </ion-col>
+       <ion-col>
+          <div class="round-border">
+
+              <h5>Activities</h5>
+              <h2>50</h2>
+
+
+          </div>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-card>
+      <ion-card-header>
+        Overall Stats
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #doughnutCanvas style="width:100%;height:250px;"></canvas>
+      </ion-card-content>
+    </ion-card>
+    </div>
+  <div *ngSwitchCase="'activities'">
+  <ion-card>
+  <ion-item>
+    <ion-avatar item-start>
+      <img src="assets/img/male.png">
+    </ion-avatar>
+    <h2>Esports Club</h2>
+    <p>November 5, 2017</p>
+  </ion-item>
+
+  <img src="assets/img/pic1.jpg">
+
+  <ion-card-content>
+    <p>This is a really super duper ultra best events</p>
+  </ion-card-content>
+
+</ion-card>
+
+ <ion-card>
+  <ion-item>
+    <ion-avatar item-start>
+      <img src="assets/img/male.png">
+    </ion-avatar>
+    <h2>Esports Club</h2>
+    <p>November 5, 2017</p>
+  </ion-item>
+
+  <img src="assets/img/pic1.jpg">
+
+  <ion-card-content>
+    <p>This is a really super duper ultra best events</p>
+  </ion-card-content>
+
+</ion-card>
+
+    <canvas #doughnutCanvas style="display:none;"></canvas>
+  </div>
+    <div *ngSwitchCase="'mgmt'">
+        <canvas #doughnutCanvas style="display:none;"></canvas>
+  </div>
+</div>
+
+
+
 
 </ion-content>

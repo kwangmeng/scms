@@ -11,6 +11,9 @@ import {SigninPage} from '../pages/signin/signin';
 import {SignupPage} from '../pages/signup/signup';
 import {ActivityPage} from '../pages/activity/activity';
 import {StudentsPage} from '../pages/students/students';
+import {ClubmodalPage} from '../pages/clubmodal/clubmodal';
+import {StudentmodalPage} from '../pages/studentmodal/studentmodal';
+import {ModalPage} from '../pages/modal/modal';
 
 import {ClubPageModule} from '../pages/club/club.module';
 import {ClubmgmtPageModule} from '../pages/clubmgmt/clubmgmt.module';
@@ -18,6 +21,10 @@ import {SigninPageModule} from '../pages/signin/signin.module';
 import {SignupPageModule} from '../pages/signup/signup.module';
 import {StudentsPageModule} from '../pages/students/students.module';
 import {ActivityPageModule} from '../pages/activity/activity.module';
+import {ClubmodalPageModule} from '../pages/clubmodal/clubmodal.module';
+import {StudentmodalPageModule} from '../pages/studentmodal/studentmodal.module';
+import {ModalPageModule} from '../pages/modal/modal.module';
+
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -39,7 +46,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SigninPageModule,
     SignupPageModule,
     StudentsPageModule,
-    ActivityPageModule
+    ActivityPageModule,
+    ClubmodalPageModule,
+    StudentmodalPageModule,
+    ModalPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -51,7 +61,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SigninPage,
     SignupPage,
     StudentsPage,
-    ActivityPage
+    ActivityPage,
+    ClubmodalPage,
+    StudentmodalPage,
+    ModalPage
   ],
   providers: [
     StatusBar,

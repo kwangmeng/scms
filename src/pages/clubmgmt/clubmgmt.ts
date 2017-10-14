@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {ClubmodalPage} from '../clubmodal/clubmodal';
 
-/**
- * Generated class for the ClubmgmtPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -19,10 +14,10 @@ export class ClubmgmtPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ClubmgmtPage');
+   
   }
 
   detail(){
-    
+   this.navCtrl.push(ClubmodalPage);
   }
 }
