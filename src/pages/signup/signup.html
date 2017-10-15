@@ -3,11 +3,39 @@
       <button ion-button menuToggle color="light">
         <ion-icon name="menu"></ion-icon>
       </button>
-      <ion-title>Dashboard</ion-title>
+      <ion-title>Sign Up</ion-title>
     </ion-navbar>
   </ion-header>
 
 
-<ion-content padding>
+<ion-content class="bg">
+
+  <video  preload="metadata" autoplay="autoplay" loop="loop" muted="muted" webkit-playsinline="webkit-playsinline" style="width:100%;">
+      <source src="assets/img/promo.mp4" type="video/mp4">
+    </video>
+
+<br><br>
+<ion-card>
+  <ion-card-header>
+    Sign Up
+  </ion-card-header>
+  <ion-list>
+
+  <ion-item>
+    <ion-label floating>Email</ion-label>
+    <ion-input type="email" color="unimy"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Password</ion-label>
+    <ion-input type="password"></ion-input>
+  </ion-item>
+  <div padding>
+<button ion-button color="unimy" block>Sign Up</button>
+  </div>
+</ion-list>
+
+
+</ion-card>
 
 </ion-content>

@@ -39,8 +39,14 @@ $app-direction: ltr;
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
 
 
-
-
+$text-input-md-highlight-color-invalid: #7b003d;
+$text-input-md-highlight-color-valid: #7b003d;
+$text-input-md-show-invalid-highlight: #7b003d;
+$text-input-md-highlight-color: #7b003d;
+$text-input-md-show-valid-highlight: #7b003d;
+$label-md-text-color-focused: #7b003d;
+$alert-md-input-border-color-focused: #7b003d;
+$alert-md-button-text-color:#7b003d;
 // Named Color Variables
 // --------------------------------------------------
 // Named colors makes it easy to reuse colors on various components.

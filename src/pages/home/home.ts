@@ -1,25 +1,34 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, LoadingController } from 'ionic-angular';
 import {Chart} from 'chart.js';
 import {ClubPage} from '../club/club';
 import {ClubmgmtPage} from '../clubmgmt/clubmgmt';
 import {ActivityPage} from '../activity/activity';
 import {StudentsPage} from '../students/students';
+import { Http } from '@angular/http'; 
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
+  
   @ViewChild('doughnutCanvas') doughnutCanvas;
   doughnutChart: any;
-  constructor(public navCtrl: NavController) {
+  data:any={"clubamt":0,"studentamt":0,"activityamt":0,"applyamt":0};
+  host:any="192.168.0.2";
+  loader:any;
+  constructor(public navCtrl: NavController,public http:Http, public loadingCtrl:LoadingController) {
 
   }
 
 
   ionViewDidLoad(){
+    // this.presentLoading();
+    this.loadData();
     this.doughnutChart = this.getDoughnutChart();
+    
   }
 
   getDoughnutChart() {
@@ -27,7 +36,7 @@ export class HomePage {
       labels: ["Clubs", "Applications", "Total Students", "Total Activities"],
       datasets: [{
         label: 'Overall Stats',
-        data: [6, 6, 200, 50],
+        data: [this.data.clubamt, this.data.applyamt, this.data.studentamt, this.data.activityamt],
         backgroundColor: [
           '#7b003d',
           '#551a8b',
@@ -60,6 +69,24 @@ export class HomePage {
     }else if(page == 4){
       this.navCtrl.push(ActivityPage);
     }
+  }
+
+
+  loadData(){
+    this.http.get("http://"+this.host+"/cms-scms-server/loadhome.php").map(resp => resp.json())
+    .subscribe(data => {
+      this.data = data;
+     // this.loader.dismiss();
+     console.log(data);
+     this.doughnutChart = this.getDoughnutChart();
+    });
+  }
+
+   presentLoading() {
+    this.loader = this.loadingCtrl.create({
+      content: "Initialising Data .."
+    });
+    this.loader.present();
   }
 
 }

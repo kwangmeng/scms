@@ -4,51 +4,26 @@
         <ion-icon name="menu"></ion-icon>
       </button>
       <ion-title>Clubs</ion-title>
+      <ion-buttons end>
+         <button ion-button color="light" (tap)="showPrompt();">
+        <ion-icon name="add"></ion-icon>
+      </button>
+      </ion-buttons>
     </ion-navbar>
   </ion-header>
 
 <ion-content>
     <ion-list>
-        <ion-item text-wrap (tap)="detail();">
+        
+      <ion-item text-wrap (tap)="detail(item);" *ngFor="let item of clubs"> 
           <ion-thumbnail item-start>
-            <img src="assets/img/kpu.jpg">
+            <img [src]="item.image">
           </ion-thumbnail>
-          <h2>Kelab Penyayang UniMy</h2>
-          <p>A really penyayang club - 130 members</p>
+          <h2>{{item.name}}</h2>
+          <p>{{item.description}} - {{item.amt}} members</p>
           <button ion-button clear item-end color="unimy">View</button>
         </ion-item>
-        <ion-item text-wrap (tap)="detail();">
-            <ion-thumbnail item-start>
-              <img src="assets/img/eco.jpg">
-            </ion-thumbnail>
-            <h2>Unimy Eco Ed-Venture Club</h2>
-            <p>A really eco friendly club - 54 members</p>
-            <button ion-button clear item-end color="unimy">View</button>
-          </ion-item>
-          <ion-item text-wrap (tap)="detail();">
-              <ion-thumbnail item-start>
-                <img src="assets/img/fx.jpg">
-              </ion-thumbnail>
-              <h2>Foundation Xclusive Club</h2>
-              <p>A really fx club - 20 members</p>
-              <button ion-button clear item-end color="unimy">View</button>
-            </ion-item>
-            <ion-item text-wrap (tap)="detail();">
-                <ion-thumbnail item-start>
-                  <img src="assets/img/peers.jpg">
-                </ion-thumbnail>
-                <h2>Peers Club</h2>
-                <p>A really peers club - 60 members</p>
-                <button ion-button clear item-end color="unimy">View</button>
-              </ion-item>
-              <ion-item text-wrap (tap)="detail();">
-                  <ion-thumbnail item-start>
-                    <img src="assets/img/esports.jpg">
-                  </ion-thumbnail>
-                  <h2>eSports Club</h2>
-                  <p>A really esports club - 200 members</p>
-                  <button ion-button clear item-end color="unimy">View</button>
-                </ion-item>
+
             
       </ion-list>
 </ion-content>
