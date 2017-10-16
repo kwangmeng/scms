@@ -31,6 +31,14 @@ export class HomePage {
     
   }
 
+   doRefresh(refresher) {
+ 
+
+      this.loadData();
+      refresher.complete();
+  
+  }
+
   getDoughnutChart() {
     let data = {
       labels: ["Clubs", "Applications", "Total Students", "Total Activities"],
@@ -78,6 +86,7 @@ export class HomePage {
       this.data = data;
      // this.loader.dismiss();
      console.log(data);
+
      this.doughnutChart = this.getDoughnutChart();
     });
   }

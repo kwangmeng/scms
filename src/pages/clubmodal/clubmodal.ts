@@ -17,12 +17,12 @@ export class ClubmodalPage {
   data:any;
   host:any="192.168.0.2";
   fileList:any;
-  complete:any;
+  complete:any={"type":"application"};
   advisors:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http) {
     this.data = this.navParams.get("data");
-
+    console.log(this.data);
   }
 
   ionViewDidLoad() {
@@ -108,5 +108,7 @@ upload(){
   updateClub(data){
     console.log(data);
   }
+
+
 
 }
