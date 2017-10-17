@@ -14,6 +14,8 @@ import {StudentsPage} from '../pages/students/students';
 import {ClubmodalPage} from '../pages/clubmodal/clubmodal';
 import {StudentmodalPage} from '../pages/studentmodal/studentmodal';
 import {ModalPage} from '../pages/modal/modal';
+import {AdduserPage} from '../pages/adduser/adduser';
+import {ProfilePage} from '../pages/profile/profile';
 
 import {ClubPageModule} from '../pages/club/club.module';
 import {ClubmgmtPageModule} from '../pages/clubmgmt/clubmgmt.module';
@@ -24,7 +26,8 @@ import {ActivityPageModule} from '../pages/activity/activity.module';
 import {ClubmodalPageModule} from '../pages/clubmodal/clubmodal.module';
 import {StudentmodalPageModule} from '../pages/studentmodal/studentmodal.module';
 import {ModalPageModule} from '../pages/modal/modal.module';
-
+import {AdduserPageModule} from '../pages/adduser/adduser.module';
+import {ProfilePageModule} from '../pages/profile/profile.module';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -51,7 +54,9 @@ import { HttpModule} from '@angular/http';
     ClubmodalPageModule,
     StudentmodalPageModule,
     ModalPageModule,
-    HttpModule
+    HttpModule,
+    AdduserPageModule,
+    ProfilePageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -66,7 +71,9 @@ import { HttpModule} from '@angular/http';
     ActivityPage,
     ClubmodalPage,
     StudentmodalPage,
-    ModalPage
+    ModalPage,
+    AdduserPage,
+    ProfilePage
   ],
   providers: [
     StatusBar,

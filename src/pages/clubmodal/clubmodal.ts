@@ -122,7 +122,7 @@ upload(){
         constitution:data.constitution,
         description:data.description,
         fee:data.fee,
-        mobile_num:data.mobile_num,
+        mobile:data.mobile_num,
         name:data.name,
         objectives:data.objectives
       }).subscribe(data=>{
@@ -218,6 +218,19 @@ upload(){
       this.getDetails();
       refresher.complete();
   
+  }
+
+  archive(){
+     this.http.post("http://"+this.host+"/cms-scms-server/delete.php",{id:this.complete.clubid})
+      .subscribe(data=>{
+        console.log(data);
+        var resp = data.text().trim();
+        if(resp == "good"){
+          this.showAlert("Club archived","The club is archived now.");
+        }else{
+          this.showAlert("Server error","Please refer to kenny for this matter");
+        }
+      });
   }
 
 }

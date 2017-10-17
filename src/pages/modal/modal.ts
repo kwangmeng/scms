@@ -72,9 +72,7 @@ upload(){
     });
   }
 
-  updateClub(data){
-    console.log(data);
-  }
+
 
    reject() {
     let prompt = this.alertCtrl.create({
@@ -169,7 +167,8 @@ upload(){
 
 
   }
-
+  
+  
 
   submitApprove(){
     this.http.post("http://"+this.host+"/cms-scms-server/approve.php",{id:this.complete.clubid})
@@ -191,6 +190,32 @@ upload(){
       this.getDetails();
       refresher.complete();
   
+  }
+
+
+    updateClub(data){
+      this.http.post("http://"+this.host+"/cms-scms-server/updateclub.php",{
+        id:data.clubid,
+        agm:data.agm_date,
+        advisor:data.advisor,
+        applicant:data.applicant_name,
+        budget:data.budget,
+        constitution:data.constitution,
+        description:data.description,
+        fee:data.fee,
+        mobile:data.mobile_num,
+        name:data.name,
+        objectives:data.objectives
+      }).subscribe(data=>{
+         console.log(data);
+         var resp = data.text().trim();
+      if(resp == "good"){
+         this.showAlert("Club details updated","Club details updated successfully");
+      }else{
+         this.showAlert("Error !","Please refer to kenny ");
+      }
+ 
+    });
   }
 
 }
