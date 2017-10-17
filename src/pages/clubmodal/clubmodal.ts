@@ -1,5 +1,5 @@
 import { Component , ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams,Events} from 'ionic-angular';
+import { IonicPage, NavController, NavParams,Events, AlertController} from 'ionic-angular';
 import {Chart} from 'chart.js';
 import {Http, Headers,RequestOptions} from '@angular/http'; 
 import 'rxjs/add/operator/map';
@@ -19,8 +19,12 @@ export class ClubmodalPage {
   fileList:any;
   complete:any={"type":"application"};
   advisors:any;
+  member:any;
+  members:any;
+  memberlist:any;
+  size:any=0;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http, public events:Events) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http, public events:Events, public alertCtrl:AlertController) {
     this.events.publish('reloadClub');
     this.data = this.navParams.get("data");
     console.log(this.data);
@@ -29,6 +33,7 @@ export class ClubmodalPage {
   ionViewDidLoad() {
   this.getDetails();
   this.getAdvisors();
+
   this.doughnutChart = this.getDoughnutChart();
   }
 
@@ -95,6 +100,7 @@ upload(){
     .subscribe(data=>{
       this.complete = data;
       console.log(data);
+        this.loadMembers();
     });
   }
 
@@ -107,10 +113,111 @@ upload(){
   }
 
   updateClub(data){
-    console.log(data);
+      this.http.post("http://"+this.host+"/cms-scms-server/updateclub.php",{
+        id:data.clubid,
+        agm:data.agm_date,
+        advisor:data.advisor,
+        applicant:data.applicant_name,
+        budget:data.budget,
+        constitution:data.constitution,
+        description:data.description,
+        fee:data.fee,
+        mobile_num:data.mobile_num,
+        name:data.name,
+        objectives:data.objectives
+      }).subscribe(data=>{
+         console.log(data);
+         var resp = data.text().trim();
+      if(resp == "good"){
+         this.showAlert("Club details updated","Club details updated successfully");
+      }else{
+         this.showAlert("Error !","Please refer to kenny ");
+      }
+ 
+    });
   }
 
+  loadMembers(){
+    this.http.post("http://"+this.host+"/cms-scms-server/loadmembers.php",{id:this.complete.clubid}).
+    map(resp=>resp.json()).subscribe(data=>{
+      this.members = data;
+      console.log(data);
+      this.size = this.members.length;
+      console.log(this.size);
+    });
+  }
 
+  addMember(data){
+    console.log(data);
+       this.http.post("http://"+this.host+"/cms-scms-server/addmembers.php",{id:this.complete.clubid,members:data}).subscribe(data=>{
+         console.log(data);
+         var resp = data.text().trim();
+      if(resp == "good"){
+         this.showAlert("Members Added","Members added successfully");
+      }else{
+         this.showAlert("Error !","Please refer to kenny ");
+      }
+ 
+    });
+  }
 
+  showAlert(title,subtitle) {
+    let prompt = this.alertCtrl.create({
+      title: title,
+      message: subtitle,
+      buttons: [
+        {
+          text: 'OK',
+           handler: () => {
+      // user has clicked the alert button
+      // begin the alert's dismiss transition
+      const navTransition = prompt.dismiss();
+
+  
+        navTransition.then(() => {
+          this.loadMembers();
+          this.getDetails();
+          this.getAdvisors();
+        });
+
+      return false;
+    }
+        }
+      ]
+    });
+    prompt.present();
+  }
+
+  delete(event){
+    var str = "";
+    for(var i=0;i<this.memberlist.length;i++){
+      
+      if(i == this.memberlist.length - 1){
+         str += this.memberlist[i];
+      }else{
+        str += this.memberlist[i]+",";
+      }
+    }
+
+     this.http.post("http://"+this.host+"/cms-scms-server/removemembers.php",{members:str}).subscribe(data=>{
+         console.log(data);
+         var resp = data.text().trim();
+      if(resp == "good"){
+         this.showAlert("Members Removed","Members removed successfully");
+      }else{
+         this.showAlert("Error !","Please refer to kenny ");
+      }
+
+    
+  });
+  }
+
+     doRefresh(refresher) {
+ 
+
+      this.getDetails();
+      refresher.complete();
+  
+  }
 
 }

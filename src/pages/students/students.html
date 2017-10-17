@@ -16,48 +16,14 @@
   (ionInput)="onInput($event)">
 </ion-searchbar>
     <ion-list>
-        <ion-item>
+        <ion-item *ngFor="let item of students" (tap)="detail(item);">
           <ion-avatar item-start>
             <img src="assets/img/male.png">
           </ion-avatar>
-          <h2>Cher</h2>
-          <p>Ugh. As if.</p>
+          <h2>{{item.fullname}}</h2>
+          <p>{{item.studentid}}</p>
         </ion-item>
-        <ion-item>
-            <ion-avatar item-start>
-              <img src="assets/img/male.png">
-            </ion-avatar>
-            <h2>Cher</h2>
-            <p>Ugh. As if.</p>
-          </ion-item>
-          <ion-item>
-              <ion-avatar item-start>
-                <img src="assets/img/male.png">
-              </ion-avatar>
-              <h2>Cher</h2>
-              <p>Ugh. As if.</p>
-            </ion-item>
-            <ion-item>
-                <ion-avatar item-start>
-                  <img src="assets/img/male.png">
-                </ion-avatar>
-                <h2>Cher</h2>
-                <p>Ugh. As if.</p>
-              </ion-item>
-              <ion-item>
-                  <ion-avatar item-start>
-                    <img src="assets/img/male.png">
-                  </ion-avatar>
-                  <h2>Cher</h2>
-                  <p>Ugh. As if.</p>
-                </ion-item>
-                <ion-item>
-                    <ion-avatar item-start>
-                      <img src="assets/img/male.png">
-                    </ion-avatar>
-                    <h2>Cher</h2>
-                    <p>Ugh. As if.</p>
-                  </ion-item>
+        
 
       </ion-list>
 </ion-content>

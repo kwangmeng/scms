@@ -1,13 +1,21 @@
 <ion-header>
     <ion-navbar color="unimy">
      
-      <ion-title>{{this.data.name}}</ion-title>
+      <ion-title>{{this.complete.name}}</ion-title>
     </ion-navbar>
   </ion-header>
 
 
 
 <ion-content class="bg">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
   <div class="top-container">
 <img [src]="this.data.image" class="img-bg">
   </div>
@@ -95,6 +103,33 @@
 </ion-list>
 <br>
   <button ion-button color="unimy" block (tap)="updateClub(complete)">Update Club Details</button>
+
+  </ion-card-content>
+</ion-card>
+
+
+<ion-card>
+  <ion-card-header>
+    Club Members
+  </ion-card-header>
+  <ion-card-content>
+   <ion-list>
+    <ion-item>
+    <ion-label>Members</ion-label>
+    <ion-select [(ngModel)]="this.complete.advisor">
+      <ion-option value="{{item.id}}" *ngFor="let item of advisors">{{item.name}}</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    Total members: 
+  </ion-item>
+ <ion-item>
+    <ion-label stacked>Add Member (Split name with comma,)</ion-label>
+    <ion-input type="text" [(ngModel)]="member"></ion-input>
+  </ion-item>
+</ion-list>
+<br>
+  <button ion-button color="unimy" block (tap)="addMember(member);">Add Club Member</button>
 
   </ion-card-content>
 </ion-card>

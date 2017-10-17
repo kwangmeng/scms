@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the StudentmodalPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -14,12 +9,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'studentmodal.html',
 })
 export class StudentmodalPage {
-
+  data:any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.data = this.navParams.get("data");
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad StudentmodalPage');
+ 
   }
 
 }

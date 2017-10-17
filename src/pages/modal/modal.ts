@@ -185,4 +185,12 @@ upload(){
     });
   }
 
+     doRefresh(refresher) {
+ 
+
+      this.getDetails();
+      refresher.complete();
+  
+  }
+
 }

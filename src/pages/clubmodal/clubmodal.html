@@ -1,13 +1,21 @@
 <ion-header>
     <ion-navbar color="unimy">
      
-      <ion-title>{{this.data.name}}</ion-title>
+      <ion-title>{{this.complete.name}}</ion-title>
     </ion-navbar>
   </ion-header>
 
 
 
 <ion-content class="bg">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
   <div class="top-container">
 <img [src]="this.data.image" class="img-bg">
   </div>
@@ -32,14 +40,14 @@
         <div class="round-border">
 
           <h5>Members</h5>
-            <h2>{{this.data.amt}}</h2>
+            <h2>{{this.complete.amt}}</h2>
         </div>
       </ion-col>
        <ion-col>
           <div class="round-border">
 
               <h5>Activities</h5>
-              <h2>{{this.data.actamt}}</h2>
+              <h2>{{this.complete.actamt}}</h2>
 
 
           </div>
@@ -171,6 +179,34 @@
 
   </ion-card-content>
 </ion-card>
+
+<ion-card>
+  <ion-card-header>
+    Club Members
+  </ion-card-header>
+  <ion-card-content>
+   <ion-list>
+   <ion-item>
+    <ion-label>Members</ion-label>
+    <ion-select [(ngModel)]="memberlist" multiple="true" cancelText="Cancel" okText="Remove These Students"  (ionChange)="delete($event);">
+      <ion-option value="{{item.id}}" *ngFor="let item of members;">{{item.fullname}}</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    Total members: {{size}}
+  </ion-item>
+ <ion-item>
+    <ion-label stacked>Add Member (Split name with comma,)</ion-label>
+    <ion-input type="text" [(ngModel)]="member"></ion-input>
+  </ion-item>
+</ion-list>
+<br>
+  <button ion-button color="unimy" block (tap)="addMember(member);">Add Club Member</button>
+
+  </ion-card-content>
+</ion-card>
+
+
 
 
     <button ion-button color="danger" block>Delete Club</button>
