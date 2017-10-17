@@ -47,12 +47,12 @@
 
   <ion-item>
     <ion-label stacked>Name</ion-label>
-    <ion-input type="text" [(ngModel)]="this.complete.name"></ion-input>
+    <ion-input type="text" [(ngModel)]="complete.name"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label stacked>Description</ion-label>
-    <ion-input type="text" [(ngModel)]="this.complete.description"></ion-input>
+    <ion-input type="text" [(ngModel)]="complete.description"></ion-input>
   </ion-item>
    <ion-item>
     <ion-label>Advisors</ion-label>
@@ -62,45 +62,45 @@
   </ion-item>
   <ion-item>
     <ion-label stacked>AGM Date</ion-label>
-    <ion-input type="text" [(ngModel)]="this.complete.agm_date"></ion-input>
+    <ion-input type="text" [(ngModel)]="complete.agm_date"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label stacked>Applicant Name</ion-label>
-    <ion-input type="text" [(ngModel)]="this.complete.applicant_name"></ion-input>
+    <ion-input type="text" [(ngModel)]="complete.applicant_name"></ion-input>
   </ion-item>
    <ion-item>
     <ion-label stacked>Budget</ion-label>
-    <ion-input type="text" [(ngModel)]="this.complete.budget"></ion-input>
+    <ion-input type="text" [(ngModel)]="complete.budget"></ion-input>
   </ion-item>
    <ion-item>
     <ion-label stacked>Constitution</ion-label>
-    <ion-input type="text" [(ngModel)]="this.complete.constitution"></ion-input>
+    <ion-input type="text" [(ngModel)]="complete.constitution"></ion-input>
   </ion-item>
    <ion-item>
     <ion-label stacked>Fee</ion-label>
-    <ion-input type="text" [(ngModel)]="this.complete.fee"></ion-input>
+    <ion-input type="text" [(ngModel)]="complete.fee"></ion-input>
   </ion-item>
      <ion-item>
     <ion-label stacked>Applicant Mobile Num</ion-label>
-    <ion-input type="text" [(ngModel)]="this.complete.mobile_num"></ion-input>
+    <ion-input type="text" [(ngModel)]="complete.mobile_num"></ion-input>
   </ion-item>
      <ion-item>
     <ion-label stacked>Objectives</ion-label>
-    <ion-input type="text" [(ngModel)]="this.complete.objectives"></ion-input>
+    <ion-input type="text" [(ngModel)]="complete.objectives"></ion-input>
   </ion-item>
-      <ion-item>
-    <ion-label stacked>Status</ion-label>
-    <ion-input type="text" [(ngModel)]="this.complete.type"></ion-input>
+      <ion-item color="purplec">
+    
+    Status type: {{complete.type}}
   </ion-item>
 </ion-list>
 <br>
-  <button ion-button color="unimy" block (tap)="updateClub(this.complete)">Update Club Details</button>
+  <button ion-button color="unimy" block (tap)="updateClub(complete)">Update Club Details</button>
 
   </ion-card-content>
 </ion-card>
 
 
-
+    <button ion-button color="secondary" block (tap)="approveClub();" style="margin-bottom:6px;">Approve Club</button>
     <button ion-button color="danger" block (tap)="reject();">Reject Club Application</button>
     
     

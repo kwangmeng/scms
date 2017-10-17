@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, LoadingController } from 'ionic-angular';
+import { NavController, LoadingController, Events } from 'ionic-angular';
 import {Chart} from 'chart.js';
 import {ClubPage} from '../club/club';
 import {ClubmgmtPage} from '../clubmgmt/clubmgmt';
@@ -19,8 +19,13 @@ export class HomePage {
   data:any={"clubamt":0,"studentamt":0,"activityamt":0,"applyamt":0};
   host:any="192.168.0.2";
   loader:any;
-  constructor(public navCtrl: NavController,public http:Http, public loadingCtrl:LoadingController) {
-
+  constructor(public navCtrl: NavController,public http:Http, public loadingCtrl:LoadingController, public events:Events) {
+      this.events.subscribe('reloadHome',() => {
+        console.log("came to home");
+        this.loadData();
+        this.unsubscribe();
+    
+});
   }
 
 
@@ -28,7 +33,18 @@ export class HomePage {
     // this.presentLoading();
     this.loadData();
     this.doughnutChart = this.getDoughnutChart();
+
     
+       
+    
+  }
+
+    ionViewDidLeave(){
+    //this.events.unsubscribe('reloadHome');
+  }
+
+  unsubscribe(){
+    this.events.unsubscribe('reloadHome');
   }
 
    doRefresh(refresher) {

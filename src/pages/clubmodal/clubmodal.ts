@@ -1,8 +1,8 @@
 import { Component , ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams} from 'ionic-angular';
+import { IonicPage, NavController, NavParams,Events} from 'ionic-angular';
 import {Chart} from 'chart.js';
 import {Http, Headers,RequestOptions} from '@angular/http'; 
-
+import 'rxjs/add/operator/map';
 
 @IonicPage()
 @Component({
@@ -20,7 +20,8 @@ export class ClubmodalPage {
   complete:any={"type":"application"};
   advisors:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http, public events:Events) {
+    this.events.publish('reloadClub');
     this.data = this.navParams.get("data");
     console.log(this.data);
   }
@@ -108,6 +109,7 @@ upload(){
   updateClub(data){
     console.log(data);
   }
+
 
 
 

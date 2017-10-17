@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import {Chart} from 'chart.js';
+import { IonicPage, NavController, NavParams, AlertController, Events } from 'ionic-angular';
 import {Http, Headers,RequestOptions} from '@angular/http'; 
-
+import 'rxjs/add/operator/map';
 
 @IonicPage()
 @Component({
@@ -20,7 +19,7 @@ export class ModalPage {
   complete:any={"type":"application"};
   advisors:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http, public alertCtrl:AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http, public alertCtrl:AlertController, public events:Events) {
     this.data = this.navParams.get("data");
     console.log(this.data);
   }
@@ -95,9 +94,9 @@ upload(){
           }
         },
         {
-          text: 'Save',
+          text: 'Submit',
           handler: data => {
-            console.log('Saved clicked');
+            this.rejectProcess(data.title);
           }
         }
       ]
@@ -106,5 +105,84 @@ upload(){
   }
 
 
+  rejectProcess(data){
+    this.http.post("http://"+this.host+"/cms-scms-server/reject.php",{id:this.complete.clubid,comment:data})
+      .subscribe(data=>{
+        var resp = data.text().trim();
+        if(resp == "good"){
+          this.showAlert("Club Application Rejected","The reject is successful");
+        }else{
+          this.showAlert("Server error","Please refer to kenny for this matter");
+        }
+      });
+  }
+
+     showAlert(title,subtitle) {
+    let prompt = this.alertCtrl.create({
+      title: title,
+      message: subtitle,
+      buttons: [
+        {
+          text: 'OK',
+           handler: () => {
+      // user has clicked the alert button
+      // begin the alert's dismiss transition
+      const navTransition = prompt.dismiss();
+
+  
+        navTransition.then(() => {
+          this.events.publish('reloadClub');
+          this.navCtrl.pop();
+        });
+
+      return false;
+    }
+        }
+      ]
+    });
+    prompt.present();
+  }
+
+    approveClub(){
+      
+      let prompt = this.alertCtrl.create({
+      title: 'Approve Club?',
+      message: "Press confirm to approve the club.",
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Confirm',
+          handler: data => {
+            
+           this.submitApprove();
+
+          }
+        }
+      ]
+    });
+    prompt.present();
+
+
+  }
+
+
+  submitApprove(){
+    this.http.post("http://"+this.host+"/cms-scms-server/approve.php",{id:this.complete.clubid})
+    .subscribe(data=>{
+
+      var resp = data.text().trim();
+      if(resp == "good"){
+         this.showAlert("Club Application Approved","The approval is successful");
+      }else{
+         this.showAlert("Error !","Please refer to kenny ");
+      }
+
+    });
+  }
 
 }

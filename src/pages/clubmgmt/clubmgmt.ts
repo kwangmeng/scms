@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController  } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController, Events  } from 'ionic-angular';
 import {ClubmodalPage} from '../clubmodal/clubmodal';
 import { Http } from '@angular/http'; 
 import 'rxjs/add/operator/map';
@@ -14,12 +14,26 @@ export class ClubmgmtPage {
   advisors:any;
   host:any="192.168.0.2";
   clubs:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl:AlertController, public http:Http) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl:AlertController, public http:Http, public events:Events) {
+     
+       this.events.subscribe('reloadClub',() => {
+         this.events.publish('reloadHome');
+      this.loadClubs();
+      this.unsubscribe();
+});
+   
   }
 
   ionViewDidLoad() {
     this.loadClubs();
     this.getAdvisors();
+  }
+
+   unsubscribe(){
+    this.events.unsubscribe('reloadClub');
+  }
+    ionViewDidLeave(){
+    //this.events.unsubscribe('reloadClub');
   }
 
   detail(data){
