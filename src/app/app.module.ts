@@ -16,6 +16,9 @@ import {StudentmodalPage} from '../pages/studentmodal/studentmodal';
 import {ModalPage} from '../pages/modal/modal';
 import {AdduserPage} from '../pages/adduser/adduser';
 import {ProfilePage} from '../pages/profile/profile';
+import {UserPage} from '../pages/user/user';
+import {ChatPage} from '../pages/chat/chat';
+import {ChatmodalPage} from '../pages/chatmodal/chatmodal';
 
 import {ClubPageModule} from '../pages/club/club.module';
 import {ClubmgmtPageModule} from '../pages/clubmgmt/clubmgmt.module';
@@ -28,11 +31,14 @@ import {StudentmodalPageModule} from '../pages/studentmodal/studentmodal.module'
 import {ModalPageModule} from '../pages/modal/modal.module';
 import {AdduserPageModule} from '../pages/adduser/adduser.module';
 import {ProfilePageModule} from '../pages/profile/profile.module';
-
+import {UserPageModule} from '../pages/user/user.module';
+import {ChatPageModule} from '../pages/chat/chat.module';
+import {ChatmodalPageModule} from '../pages/chatmodal/chatmodal.module';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule} from '@angular/http';
+import { HostProvider } from '../providers/host/host';
 
 @NgModule({
   declarations: [
@@ -56,7 +62,10 @@ import { HttpModule} from '@angular/http';
     ModalPageModule,
     HttpModule,
     AdduserPageModule,
-    ProfilePageModule
+    ProfilePageModule,
+    UserPageModule,
+    ChatmodalPageModule,
+    ChatPageModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -73,12 +82,16 @@ import { HttpModule} from '@angular/http';
     StudentmodalPage,
     ModalPage,
     AdduserPage,
-    ProfilePage
+    ProfilePage,
+    UserPage,
+    ChatPage,
+    ChatmodalPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    HostProvider
   ]
 })
 export class AppModule {}

@@ -6,6 +6,27 @@
   </ion-header>
 
 
-<ion-content padding>
+<ion-content class="bg">
+ <div class="top-container">
+<img src="assets/img/male.png" class="img-bg">
+  </div>
+
+    <ion-card>
+      <ion-card-header>
+        Some details
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label stacked>Full Name</ion-label>
+           <ion-input type="text" [(ngModel)]="data.fullname"></ion-input>
+        </ion-item>
+           <ion-item>
+          <ion-label stacked>Student ID</ion-label>
+           <ion-input type="text" [(ngModel)]="data.studentid"></ion-input>
+        </ion-item>
+          <br>
+           <button ion-button color="unimy" block (tap)="updateClub(complete)">Update Member</button>
+      </ion-card-content>
+    </ion-card>
 
 </ion-content>

@@ -3,20 +3,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {HostProvider} from '../../providers/host/host';
 
 
-
 @IonicPage()
 @Component({
-  selector: 'page-signup',
-  templateUrl: 'signup.html',
+  selector: 'page-chatmodal',
+  templateUrl: 'chatmodal.html',
 })
-export class SignupPage {
+export class ChatmodalPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public host:HostProvider) {
     this.host = this.host.getHost();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SignupPage');
+    console.log('ionViewDidLoad ChatmodalPage');
   }
 
 }

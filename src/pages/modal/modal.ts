@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, Events } from 'ionic-angular';
 import {Http, Headers,RequestOptions} from '@angular/http'; 
 import 'rxjs/add/operator/map';
+import {HostProvider} from '../../providers/host/host';
 
 @IonicPage()
 @Component({
@@ -14,14 +15,15 @@ export class ModalPage {
   doughnutChart: any;
   options:any="mgmt";
   data:any;
-  host:any="192.168.0.2";
+
   fileList:any;
   complete:any={"type":"application"};
   advisors:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http, public alertCtrl:AlertController, public events:Events) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http, public alertCtrl:AlertController, public events:Events, public host:HostProvider) {
     this.data = this.navParams.get("data");
     console.log(this.data);
+    this.host = this.host.getHost();
   }
 
   ionViewDidLoad() {

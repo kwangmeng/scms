@@ -1,0 +1,50 @@
+<ion-header>
+    <ion-navbar color="unimy">
+      
+      <ion-title>{{data.firstname}} {{data.lastname}}</ion-title>
+  
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content class="bg">
+   <div class="top-container">
+<img src="assets/img/male.png" class="img-bg">
+  </div>
+
+  <ion-card>
+      <ion-card-header>
+        User Details
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label stacked>Email</ion-label>
+           <ion-input type="text" [(ngModel)]="data.email" readonly=""></ion-input>
+        </ion-item>
+           <ion-item>
+          <ion-label stacked>Password</ion-label>
+           <ion-input type="text" [(ngModel)]="data.password"></ion-input>
+        </ion-item>
+               <ion-item>
+          <ion-label stacked>First Name</ion-label>
+           <ion-input type="text" [(ngModel)]="data.firstname"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>Last Name</ion-label>
+           <ion-input type="text" [(ngModel)]="data.lastname"></ion-input>
+        </ion-item>
+            <ion-item>
+    <ion-label>Role</ion-label>
+    <ion-select [(ngModel)]="data.role"  cancelText="Cancel" okText="Select">
+      <ion-option value="admin">Admin</ion-option>
+      <ion-option value="applicant">Applicant</ion-option>
+    </ion-select>
+  </ion-item>
+          <br>
+           <button ion-button color="unimy" block (tap)="updateUser(data)">Update User</button>
+      </ion-card-content>
+    </ion-card>
+    <div padding>
+       <button ion-button color="danger" block (tap)="deleteUser()">Delete User</button>
+    </div>
+</ion-content>

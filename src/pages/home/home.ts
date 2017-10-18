@@ -7,6 +7,7 @@ import {ActivityPage} from '../activity/activity';
 import {StudentsPage} from '../students/students';
 import { Http } from '@angular/http'; 
 import 'rxjs/add/operator/map';
+import {HostProvider} from '../../providers/host/host';
 
 @Component({
   selector: 'page-home',
@@ -17,15 +18,16 @@ export class HomePage {
   @ViewChild('doughnutCanvas') doughnutCanvas;
   doughnutChart: any;
   data:any={"clubamt":0,"studentamt":0,"activityamt":0,"applyamt":0};
-  host:any="192.168.0.2";
+
   loader:any;
-  constructor(public navCtrl: NavController,public http:Http, public loadingCtrl:LoadingController, public events:Events) {
+  constructor(public navCtrl: NavController,public http:Http, public loadingCtrl:LoadingController, public events:Events, public host:HostProvider) {
       this.events.subscribe('reloadHome',() => {
         console.log("came to home");
         this.loadData();
         this.unsubscribe();
     
 });
+      this.host = this.host.getHost();
   }
 
 

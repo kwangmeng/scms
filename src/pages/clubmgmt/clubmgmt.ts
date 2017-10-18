@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams,AlertController, Events  } from 'io
 import {ClubmodalPage} from '../clubmodal/clubmodal';
 import { Http } from '@angular/http'; 
 import 'rxjs/add/operator/map';
+import {HostProvider} from '../../providers/host/host';
 
 @IonicPage()
 @Component({
@@ -12,16 +13,16 @@ import 'rxjs/add/operator/map';
 export class ClubmgmtPage {
 
   advisors:any;
-  host:any="192.168.0.2";
+
   clubs:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl:AlertController, public http:Http, public events:Events) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl:AlertController, public http:Http, public events:Events, public host:HostProvider) {
      
        this.events.subscribe('reloadClub',() => {
          this.events.publish('reloadHome');
       this.loadClubs();
       this.unsubscribe();
 });
-   
+   this.host = this.host.getHost();
   }
 
   ionViewDidLoad() {

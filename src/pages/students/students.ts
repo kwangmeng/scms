@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Http, Headers,RequestOptions} from '@angular/http'; 
 import 'rxjs/add/operator/map';
 import {StudentmodalPage} from '../studentmodal/studentmodal';
-
+import {HostProvider} from '../../providers/host/host';
 
 
 @IonicPage()
@@ -13,8 +13,9 @@ import {StudentmodalPage} from '../studentmodal/studentmodal';
 })
 export class StudentsPage {
   students:any;
-  host:any="192.168.0.2";
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http) {
+ 
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http, public host:HostProvider) {
+    this.host = this.host.getHost();
   }
 
   ionViewDidLoad() {

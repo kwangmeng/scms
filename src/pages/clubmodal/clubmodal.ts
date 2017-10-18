@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams,Events, AlertController} from 'ioni
 import {Chart} from 'chart.js';
 import {Http, Headers,RequestOptions} from '@angular/http'; 
 import 'rxjs/add/operator/map';
+import {HostProvider} from '../../providers/host/host';
 
 @IonicPage()
 @Component({
@@ -15,7 +16,7 @@ export class ClubmodalPage {
   doughnutChart: any;
   options:any="stats";
   data:any;
-  host:any="192.168.0.2";
+ 
   fileList:any;
   complete:any={"type":"application"};
   advisors:any;
@@ -24,10 +25,11 @@ export class ClubmodalPage {
   memberlist:any;
   size:any=0;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http, public events:Events, public alertCtrl:AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http, public events:Events, public alertCtrl:AlertController, public host:HostProvider) {
     this.events.publish('reloadClub');
     this.data = this.navParams.get("data");
     console.log(this.data);
+    this.host = this.host.getHost();
   }
 
   ionViewDidLoad() {
