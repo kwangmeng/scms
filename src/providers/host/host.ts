@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class HostProvider {
-  host:any="192.168.0.2";
+  host:any="kennynkm.com";
   constructor(public http: Http) {
 
   }

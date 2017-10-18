@@ -51,7 +51,7 @@ upload(){
         headers.append('Accept', 'application/json');
         let options = new RequestOptions({ headers: headers });
 
-         this.http.post("http://"+this.host+"/cms-scms-server/image.php", formData, options)
+         this.http.post("https://"+this.host+"/cms-scms-server/image.php", formData, options)
               .subscribe(
                 data => {
                   this.data.image = data.text().trim();
@@ -59,7 +59,7 @@ upload(){
     }
 }
   getDetails(){
-    this.http.post("http://"+this.host+"/cms-scms-server/clubdetails.php",{id:this.data.id}).map(resp=>resp.json())
+    this.http.post("https://"+this.host+"/cms-scms-server/clubdetails.php",{id:this.data.id}).map(resp=>resp.json())
     .subscribe(data=>{
       this.complete = data;
       console.log(data);
@@ -67,7 +67,7 @@ upload(){
   }
 
   getAdvisors(){
-     this.http.get("http://"+this.host+"/cms-scms-server/getAdvisors.php").map(resp => resp.json())
+     this.http.get("https://"+this.host+"/cms-scms-server/getAdvisors.php").map(resp => resp.json())
     .subscribe(data => {
       this.advisors = data;
         console.log(data);
@@ -106,7 +106,7 @@ upload(){
 
 
   rejectProcess(data){
-    this.http.post("http://"+this.host+"/cms-scms-server/reject.php",{id:this.complete.clubid,comment:data})
+    this.http.post("https://"+this.host+"/cms-scms-server/reject.php",{id:this.complete.clubid,comment:data})
       .subscribe(data=>{
         var resp = data.text().trim();
         if(resp == "good"){
@@ -173,7 +173,7 @@ upload(){
   
 
   submitApprove(){
-    this.http.post("http://"+this.host+"/cms-scms-server/approve.php",{id:this.complete.clubid})
+    this.http.post("https://"+this.host+"/cms-scms-server/approve.php",{id:this.complete.clubid})
     .subscribe(data=>{
 
       var resp = data.text().trim();
@@ -196,7 +196,7 @@ upload(){
 
 
     updateClub(data){
-      this.http.post("http://"+this.host+"/cms-scms-server/updateclub.php",{
+      this.http.post("https://"+this.host+"/cms-scms-server/updateclub.php",{
         id:data.clubid,
         agm:data.agm_date,
         advisor:data.advisor,

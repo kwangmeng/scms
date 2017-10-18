@@ -25,7 +25,7 @@ export class UserPage {
   }
 
   updateUser(data){
-       this.http.post("http://"+this.host+"/cms-scms-server/updateuser.php",{id:data.id,email:data.email,password:data.password,firstname:data.firstname,lastname:data.lastname,role:data.role}).subscribe(data=>{
+       this.http.post("https://"+this.host+"/cms-scms-server/updateuser.php",{id:data.id,email:data.email,password:data.password,firstname:data.firstname,lastname:data.lastname,role:data.role}).subscribe(data=>{
         var resp = data.text().trim();
 
         if(resp == "good"){
@@ -67,7 +67,7 @@ export class UserPage {
   }
 
   deleteUser1(){
-    this.http.post("http://"+this.host+"/cms-scms-server/deleteuser.php",{id:this.data.id}).subscribe(data=>{
+    this.http.post("https://"+this.host+"/cms-scms-server/deleteuser.php",{id:this.data.id}).subscribe(data=>{
         var resp = data.text().trim();
 
         if(resp == "good"){

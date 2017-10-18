@@ -45,7 +45,7 @@ export class ClubmgmtPage {
 
   loadClubs(){
     console.log("came here");
-    this.http.get("http://"+this.host+"/cms-scms-server/loadClubs.php").map(resp=>resp.json()).subscribe(data=>{
+    this.http.get("https://"+this.host+"/cms-scms-server/loadClubs.php").map(resp=>resp.json()).subscribe(data=>{
       this.clubs = data;
     });
   }
@@ -104,7 +104,7 @@ export class ClubmgmtPage {
   }
 
   createClub(name){
-    this.http.post("http://"+this.host+"/cms-scms-server/create_club.php",{name:name})
+    this.http.post("https://"+this.host+"/cms-scms-server/create_club.php",{name:name})
     .subscribe(data=>{
         var resp = data.text().trim();
         if(resp == "good"){
@@ -151,7 +151,7 @@ export class ClubmgmtPage {
 
 
   getAdvisors(){
-    this.http.get("http://"+this.host+"/cms-scms-server/getAdvisors.php").map(resp => resp.json())
+    this.http.get("https://"+this.host+"/cms-scms-server/getAdvisors.php").map(resp => resp.json())
     .subscribe(data => {
       this.advisors = data;
     });

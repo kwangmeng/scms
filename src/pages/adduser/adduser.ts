@@ -81,7 +81,7 @@ this.host = this.host.getHost();
 
 
   adduser(data){
-     this.http.post("http://"+this.host+"/cms-scms-server/adduser.php",{email:data.email,password:data.password,firstname:data.firstname,lastname:data.lastname}).subscribe(data=>{
+     this.http.post("https://"+this.host+"/cms-scms-server/adduser.php",{email:data.email,password:data.password,firstname:data.firstname,lastname:data.lastname}).subscribe(data=>{
         var resp = data.text().trim();
 
         if(resp == "good"){
@@ -121,7 +121,7 @@ this.host = this.host.getHost();
   }
 
   loadUsers(){
-    this.http.get("http://"+this.host+"/cms-scms-server/loadusers.php").map(resp=>resp.json()).subscribe(data=>{
+    this.http.get("https://"+this.host+"/cms-scms-server/loadusers.php").map(resp=>resp.json()).subscribe(data=>{
       this.users = data;
       console.log(data);
     });

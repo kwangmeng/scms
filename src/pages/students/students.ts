@@ -48,7 +48,7 @@ onInput(ev:any){
 
 
 loadStudents(){
-  this.http.get("http://"+this.host+"/cms-scms-server/loadstudents.php").map(resp => resp.json())
+  this.http.get("https://"+this.host+"/cms-scms-server/loadstudents.php").map(resp => resp.json())
   .subscribe(data=>{
     this.students = data;
     console.log(data);

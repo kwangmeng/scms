@@ -36,7 +36,7 @@ export class ClubPage {
 
   loadClubs(){
     console.log("came here");
-    this.http.get("http://"+this.host+"/cms-scms-server/loadapplication.php").map(resp=>resp.json()).subscribe(data=>{
+    this.http.get("https://"+this.host+"/cms-scms-server/loadapplication.php").map(resp=>resp.json()).subscribe(data=>{
       this.clubs = data;
     });
   }

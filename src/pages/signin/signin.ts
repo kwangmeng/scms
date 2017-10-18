@@ -30,14 +30,14 @@ export class SigninPage {
 
   login(data){
     this.presentLoading();
-    this.http.post("http://"+this.host1+"/cms-scms-server/login.php",{email:data.email,password:data.password}).subscribe(data=>{
+    this.http.post("https://"+this.host1+"/cms-scms-server/login.php",{email:data.email,password:data.password}).subscribe(data=>{
         this.loading.dismiss();
         var resp = data.text().trim();
         console.log(resp);
         if(resp == "good"){
-            this.presentToast("Authenticated, you are logged in.");
+            this.presentToast("Authenticated, you are logged in.","yes");
         }else{
-           this.presentToast("Invalid email or password.");
+           this.presentToast("Invalid email or password.","no");
         }
     });
   }
@@ -50,7 +50,7 @@ export class SigninPage {
     this.loading.present();
   }
 
-  presentToast(title) {
+  presentToast(title,type) {
   const toast = this.toastCtrl.create({
     message: title,
     duration: 3000,
@@ -58,9 +58,12 @@ export class SigninPage {
   });
 
   toast.onDidDismiss(() => {
-      this.host.setLogin();
+    if(type == "yes"){
+          this.host.setLogin();
       this.events.publish("checkLogin");
       this.navCtrl.setRoot(HomePage);
+    }
+  
   });
 
   toast.present();

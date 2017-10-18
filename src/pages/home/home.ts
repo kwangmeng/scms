@@ -99,7 +99,7 @@ export class HomePage {
 
 
   loadData(){
-    this.http.get("http://"+this.host+"/cms-scms-server/loadhome.php").map(resp => resp.json())
+    this.http.get("https://"+this.host+"/cms-scms-server/loadhome.php").map(resp => resp.json())
     .subscribe(data => {
       this.data = data;
      // this.loader.dismiss();

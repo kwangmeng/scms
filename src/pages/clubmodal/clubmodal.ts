@@ -90,7 +90,7 @@ upload(){
         headers.append('Accept', 'application/json');
         let options = new RequestOptions({ headers: headers });
 
-         this.http.post("http://"+this.host+"/cms-scms-server/image.php", formData, options)
+         this.http.post("https://"+this.host+"/cms-scms-server/image.php", formData, options)
               .subscribe(
                 data => {
                   this.data.image = data.text().trim();
@@ -98,7 +98,7 @@ upload(){
     }
 }
   getDetails(){
-    this.http.post("http://"+this.host+"/cms-scms-server/clubdetails.php",{id:this.data.id}).map(resp=>resp.json())
+    this.http.post("https://"+this.host+"/cms-scms-server/clubdetails.php",{id:this.data.id}).map(resp=>resp.json())
     .subscribe(data=>{
       this.complete = data;
       console.log(data);
@@ -107,7 +107,7 @@ upload(){
   }
 
   getAdvisors(){
-     this.http.get("http://"+this.host+"/cms-scms-server/getAdvisors.php").map(resp => resp.json())
+     this.http.get("https://"+this.host+"/cms-scms-server/getAdvisors.php").map(resp => resp.json())
     .subscribe(data => {
       this.advisors = data;
         console.log(data);
@@ -115,7 +115,7 @@ upload(){
   }
 
   updateClub(data){
-      this.http.post("http://"+this.host+"/cms-scms-server/updateclub.php",{
+      this.http.post("https://"+this.host+"/cms-scms-server/updateclub.php",{
         id:data.clubid,
         agm:data.agm_date,
         advisor:data.advisor,
@@ -140,7 +140,7 @@ upload(){
   }
 
   loadMembers(){
-    this.http.post("http://"+this.host+"/cms-scms-server/loadmembers.php",{id:this.complete.clubid}).
+    this.http.post("https://"+this.host+"/cms-scms-server/loadmembers.php",{id:this.complete.clubid}).
     map(resp=>resp.json()).subscribe(data=>{
       this.members = data;
       console.log(data);
@@ -151,7 +151,7 @@ upload(){
 
   addMember(data){
     console.log(data);
-       this.http.post("http://"+this.host+"/cms-scms-server/addmembers.php",{id:this.complete.clubid,members:data}).subscribe(data=>{
+       this.http.post("https://"+this.host+"/cms-scms-server/addmembers.php",{id:this.complete.clubid,members:data}).subscribe(data=>{
          console.log(data);
          var resp = data.text().trim();
       if(resp == "good"){
@@ -201,7 +201,7 @@ upload(){
       }
     }
 
-     this.http.post("http://"+this.host+"/cms-scms-server/removemembers.php",{members:str}).subscribe(data=>{
+     this.http.post("https://"+this.host+"/cms-scms-server/removemembers.php",{members:str}).subscribe(data=>{
          console.log(data);
          var resp = data.text().trim();
       if(resp == "good"){
@@ -223,7 +223,7 @@ upload(){
   }
 
   archive(){
-     this.http.post("http://"+this.host+"/cms-scms-server/delete.php",{id:this.complete.clubid})
+     this.http.post("https://"+this.host+"/cms-scms-server/delete.php",{id:this.complete.clubid})
       .subscribe(data=>{
         console.log(data);
         var resp = data.text().trim();
